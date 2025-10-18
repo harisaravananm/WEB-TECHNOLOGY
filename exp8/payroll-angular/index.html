@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="payrollApp">
+<head>
+  <meta charset="utf-8">
+  <title>Payroll Management - AngularJS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js"></script>
+  <script src="services.js"></script>
+  <script src="controllers.js"></script>
+</head>
+<body>
+  <div class="container" ng-controller="MainCtrl as main">
+    <h1>Payroll Management (AngularJS)</h1>
+    <div class="nav">
+      <button ng-click="main.show='admin'">Admin</button>
+      <button ng-click="main.show='employee'">Employee</button>
+    </div>
+
+    <div ng-show="main.show==='admin'">
+      <h2>Admin - Manage Salaries</h2>
+      <form ng-submit="main.save()">
+        <input type="hidden" ng-model="main.editing.id">
+        <label>Employee ID: <input required ng-model="main.editing.employeeId"></label>
+        <label>Name: <input required ng-model="main.editing.name"></label>
+        <label>Salary: <input required type="number" ng-model="main.editing.salary"></label>
+        <button type="submit">{{main.editing.id ? 'Update' : 'Add'}}</button>
+        <button type="button" ng-click="main.reset()">Clear</button>
+      </form>
+
+      <div class="admin-tools">
+        <button ng-click="main.loadSample()">Load Sample Data</button>
+        <button ng-click="main.exportJson()">Export JSON</button>
+        <label class="import-label">Import JSON <input type="file" id="importFile" onchange="angular.element(this).scope().main.handleFile(this)"/></label>
+        <button ng-click="main.clearAll()" class="danger">Clear All</button>
+      </div>
+
+      <h3>All Salaries</h3>
+      <table>
+        <thead><tr><th>#</th><th>Employee ID</th><th>Name</th><th>Salary</th><th>Actions</th></tr></thead>
+        <tbody>
+          <tr ng-repeat="s in main.salaries">
+            <td>{{$index + 1}}</td>
+            <td>{{s.employeeId}}</td>
+            <td>{{s.name}}</td>
+            <td>{{s.salary | currency}}</td>
+            <td>
+              <button ng-click="main.edit(s)">Edit</button>
+              <button ng-click="main.delete(s)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div ng-show="main.show==='employee'">
+      <h2>Employee - View Salary</h2>
+      <label>Enter Employee ID: <input ng-model="main.lookupEmployeeId"></label>
+      <button ng-click="main.lookup()">Lookup</button>
+      <div ng-if="main.found">
+        <h3>Salary Details</h3>
+        <p><strong>Name:</strong> {{main.found.name}}</p>
+        <p><strong>Employee ID:</strong> {{main.found.employeeId}}</p>
+        <p><strong>Salary:</strong> {{main.found.salary | currency}}</p>
+      </div>
+      <div ng-if="main.lookupAttempted && !main.found">
+        <p>No record found for Employee ID "{{main.lookupEmployeeId}}".</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+body { font-family: Arial, sans-serif; padding: 20px; background:#f7f7f7; }
+.container { background:white; padding:20px; border-radius:6px; max-width:900px; margin:auto; box-shadow: 0 2px 6px rgba(0,0,0,0.08);} 
+.nav { margin-bottom: 12px;}
+button { margin-right:6px; padding:6px 10px; border-radius:4px; border:1px solid #ccc; background:#fff; cursor:pointer; }
+button:hover { background:#f0f0f0; }
+.admin-tools { margin:10px 0; }
+.import-label input[type=file]{ display:inline-block; margin-left:6px; }
+.danger { background:#ffe6e6; border-color:#e07; }
+table { width:100%; border-collapse: collapse; margin-top:10px; }
+table th, table td { border: 1px solid #ddd; padding:8px; text-align:left; }
+form label { display:inline-block; margin-right:8px; }
+input { margin: 4px 6px; padding:4px 6px; }
+
+/* responsive */
+@media (max-width:600px){ .container{padding:12px;} form label{display:block;margin:6px 0;} }
