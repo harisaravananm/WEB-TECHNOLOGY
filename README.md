@@ -1,4 +1,9 @@
 # WEB-TECHNOLOGY
+
+<!-- tech-version-badges -->
+![HTML 5](https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS 3](https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript ES6](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
+<!-- /tech-version-badges -->
+
 Web technology uses HTML to build webpage structure, CSS to style and layout content, and JavaScript to add interactivity and dynamic behavior. Together, they create modern, engaging web experiences seen in websites and apps. HTML forms the skeleton, CSS designs the look, and JavaScript enables user interaction, animations.
 
 Web Development Project
